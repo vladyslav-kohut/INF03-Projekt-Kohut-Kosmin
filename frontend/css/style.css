@@ -1,7 +1,3 @@
-/* EduResource Manager — base styles
- * Layout, typografia, nawigacja, tabele (plan rozdz. 1.3).
- * Zasady: płaskość, linia 1px, gęstość, brak animacji poza hover tła.
- */
 
 * {
   margin: 0;
@@ -16,8 +12,6 @@ body {
   background: var(--color-bg);
   line-height: 1.4;
 }
-
-/* --- Struktura strony --- */
 
 .container {
   max-width: 960px;
@@ -43,9 +37,6 @@ h2 {
   font-weight: 600;
   margin: var(--space-3) 0 var(--space-1);
 }
-
-/* --- Nawigacja: poziomy pasek, linki oddzielone linią,
-       aktywna pozycja podkreślona linią 2px --- */
 
 .nav {
   display: flex;
@@ -83,8 +74,6 @@ h2 {
   color: var(--color-muted);
 }
 
-/* --- Tabela --- */
-
 .table {
   width: 100%;
   border-collapse: collapse;
@@ -115,9 +104,6 @@ h2 {
   text-align: right;
 }
 
-/* --- Status zasobu: zwykły tekst, bez kolorów.
-       Wypożyczony i Zutylizowany wyróżnione grubością. --- */
-
 .status {
   font-size: var(--size-small);
 }
@@ -126,8 +112,6 @@ h2 {
 .status--retired {
   font-weight: 600;
 }
-
-/* --- Tekst pomocniczy --- */
 
 .muted {
   color: var(--color-muted);
