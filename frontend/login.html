@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Logowanie — EduResource Manager</title>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+  <div class="container" style="max-width: 360px; padding-top: 96px;">
+    <div class="page-header">
+      <h1>EduResource Manager</h1>
+    </div>
+    <p class="muted" style="margin-bottom: 16px;">Zaloguj się na konto szkolne.</p>
+
+    <form class="form" onsubmit="return false;">
+      <div class="field">
+        <label class="field__label" for="login">Login</label>
+        <input class="field__input" id="login" type="text" autocomplete="username" placeholder="np. j.kowalski">
+      </div>
+      <div class="field">
+        <label class="field__label" for="password">Hasło</label>
+        <input class="field__input" id="password" type="password" autocomplete="current-password">
+      </div>
+      <div class="form__actions">
+        <button class="btn btn--primary" type="submit">Zaloguj</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>
