@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Style guide — EduResource Manager</title>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+  <nav class="nav">
+    <a href="#" class="is-active">Zasoby</a>
+    <a href="#">Wypożyczenia</a>
+    <a href="#">Raporty</a>
+    <span class="nav-user">Zalogowany: Administrator</span>
+  </nav>
+
+  <div class="container">
+    <div class="page-header">
+      <h1>Style guide</h1>
+      <span class="muted">Design system EduResource Manager</span>
+    </div>
+
+    <p class="message message--success">Zasób został dodany.</p>
+
+    <div class="section">
+      <h2>Kolory</h2>
+      <p class="muted" style="margin-bottom: 8px;">Tylko czerń, biel i szarości. Bez kolorów wypełnień.</p>
+      <table class="table">
+        <thead>
+          <tr><th>Zmienna</th><th>Wartość</th><th>Zastosowanie</th><th>Próbka</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>--color-bg</td><td>#ffffff</td><td>Tło aplikacji</td><td><span style="display:inline-block;width:48px;height:16px;border:1px solid var(--color-line);background:#ffffff;"></span></td></tr>
+          <tr><td>--color-ink</td><td>#111111</td><td>Tekst podstawowy</td><td><span style="display:inline-block;width:48px;height:16px;background:#111111;"></span></td></tr>
+          <tr><td>--color-muted</td><td>#666666</td><td>Tekst pomocniczy</td><td><span style="display:inline-block;width:48px;height:16px;background:#666666;"></span></td></tr>
+          <tr><td>--color-line-soft</td><td>#cccccc</td><td>Linie pomocnicze</td><td><span style="display:inline-block;width:48px;height:16px;background:#cccccc;"></span></td></tr>
+          <tr><td>--color-fill</td><td>#f4f4f4</td><td>Paski, hover, pola</td><td><span style="display:inline-block;width:48px;height:16px;border:1px solid var(--color-line-soft);background:#f4f4f4;"></span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section">
+      <h2>Typografia</h2>
+      <p>Wielkość podstawowa — 15px, treść akapitu. Jeden font systemowy, maksimum trzech rozmiarów w widoku.</p>
+      <p class="muted">Wielkość pomocnicza — 13px: daty, opisy, nagłówki tabel.</p>
+      <h1 style="margin-top: 8px;">Nagłówek strony — 22px</h1>
+      <h2>Nagłówek sekcji — 15px, pogrubiony</h2>
+    </div>
+
+    <div class="section">
+      <h2>Przyciski</h2>
+      <p style="margin-bottom: 8px;">
+        <button class="btn btn--primary">Dodaj zasób</button>
+        <button class="btn">Edytuj</button>
+        <button class="btn">Usuń</button>
+        <button class="btn" disabled>Zapisz</button>
+      </p>
+      <p class="muted">Przycisk „Usuń” ma wygląd wtórny i wymaga potwierdzenia confirm() w JavaScript.</p>
+    </div>
+
+    <div class="section">
+      <h2>Formularz</h2>
+      <form class="form" onsubmit="return false;">
+        <div class="field">
+          <label class="field__label" for="sg-name">Nazwa zasobu</label>
+          <input class="field__input" id="sg-name" type="text" value="Projektor Epson EB-X500">
+        </div>
+        <div class="field">
+          <label class="field__label" for="sg-category">Kategoria</label>
+          <select class="field__select" id="sg-category">
+            <option>Projektor</option>
+            <option>Laptop</option>
+            <option>Tablet</option>
+          </select>
+        </div>
+        <div class="field">
+          <label class="field__label" for="sg-catalog">Numer katalogowy</label>
+          <input class="field__input" id="sg-catalog" type="text" value="PRJ-001">
+          <span class="field__error">Błąd: numer katalogowy już istnieje.</span>
+        </div>
+        <div class="form__actions">
+          <button class="btn btn--primary" type="submit">Zapisz</button>
+          <button class="btn" type="reset">Anuluj</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="section">
+      <h2>Tabela zasobów</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Numer</th>
+            <th>Nazwa</th>
+            <th>Kategoria</th>
+            <th>Lokalizacja</th>
+            <th>Status</th>
+            <th style="text-align:right;">Akcje</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>PRJ-001</td>
+            <td>Projektor Epson EB-X500</td>
+            <td>Projektor</td>
+            <td>Sala 12</td>
+            <td><span class="status">Dostępny</span></td>
+            <td class="actions"><button class="btn">Edytuj</button> <button class="btn">Usuń</button></td>
+          </tr>
+          <tr>
+            <td>LAP-014</td>
+            <td>Laptop Dell Latitude 5440</td>
+            <td>Laptop</td>
+            <td>Sala 4</td>
+            <td><span class="status status--loaned">Wypożyczony</span></td>
+            <td class="actions"><button class="btn">Edytuj</button></td>
+          </tr>
+          <tr>
+            <td>PRJ-002</td>
+            <td>Projektor BenQ MH560</td>
+            <td>Projektor</td>
+            <td>Magazyn</td>
+            <td><span class="status">W naprawie</span></td>
+            <td class="actions"><button class="btn">Edytuj</button> <button class="btn">Usuń</button></td>
+          </tr>
+          <tr>
+            <td>TAB-007</td>
+            <td>Tablet Lenovo Tab M10</td>
+            <td>Tablet</td>
+            <td>Sala 3</td>
+            <td><span class="status status--retired">Zutylizowany</span></td>
+            <td class="actions"><button class="btn">Usuń</button></td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="muted" style="margin-top: 8px;">Status to zwykły tekst 13px. „Wypożyczony” i „Zutylizowany” — pogrubione. Bez kolorów i ikonek.</p>
+    </div>
+
+    <div class="section">
+      <h2>Komunikaty</h2>
+      <p class="message message--success">Zasób „Projektor Epson EB-X500” został dodany.</p>
+      <p class="message message--error">Błąd: nie można usunąć wypożyczonego zasobu.</p>
+      <p class="muted">Sukces — czarne tło, biały tekst. Błąd — biała tło, ramka 1px, prefiks „Błąd:”.</p>
+    </div>
+  </div>
+</body>
+</html>
