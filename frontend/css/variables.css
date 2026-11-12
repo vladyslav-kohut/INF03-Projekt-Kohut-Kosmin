@@ -1,0 +1,26 @@
+/* EduResource Manager — design tokens
+ * Czarno-biały system: zero gradientów, cieni i emoji.
+ * Wszystko buduje typografia, siatka i linia 1px (ARCHITECTURE.md, plan rozdz. 1).
+ */
+
+:root {
+  --color-bg: #ffffff;        /* tło aplikacji */
+  --color-ink: #111111;       /* tekst podstawowy */
+  --color-muted: #666666;     /* tekst pomocniczy, daty, opisy */
+  --color-line: #111111;      /* linie główne, nagłówki tabel */
+  --color-line-soft: #cccccc; /* linie pomocnicze */
+  --color-fill: #f4f4f4;      /* tło pasków, hover wierszy, pól */
+  --color-invert-bg: #111111; /* tło przycisku podstawowego */
+  --color-invert-ink: #ffffff;
+
+  --font: system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --size-text: 15px;
+  --size-small: 13px;
+  --size-title: 22px;
+
+  --space-1: 8px;
+  --space-2: 12px;
+  --space-3: 16px;
+  --space-4: 24px;
+}
