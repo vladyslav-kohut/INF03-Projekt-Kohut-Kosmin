@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zasoby — EduResource Manager</title>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+  <nav class="nav">
+    <a href="index.html" class="is-active">Zasoby</a>
+    <a href="loans.html">Wypożyczenia</a>
+    <a href="reports.html">Raporty</a>
+    <span class="nav-user">Zalogowany: Administrator</span>
+  </nav>
+
+  <div class="container">
+    <div class="page-header">
+      <h1>Zasoby</h1>
+      <button class="btn btn--primary">Dodaj zasób</button>
+    </div>
+
+    <p class="message message--success">Zasób „Tablet Lenovo Tab M10” został dodany.</p>
+
+    <form class="form" onsubmit="return false;" style="max-width: none;">
+      <div class="form__actions" style="margin: 0 0 8px; flex-wrap: wrap; align-items: flex-end;">
+        <div class="field" style="flex: 1 1 240px; margin-bottom: 0;">
+          <label class="field__label" for="q">Szukaj</label>
+          <input class="field__input" id="q" type="text" placeholder="Nazwa lub numer katalogowy">
+        </div>
+        <div class="field" style="margin-bottom: 0;">
+          <label class="field__label" for="category">Kategoria</label>
+          <select class="field__select" id="category">
+            <option value="">Wszystkie</option>
+            <option>Projektor</option>
+            <option>Laptop</option>
+            <option>Tablet</option>
+          </select>
+        </div>
+        <div class="field" style="margin-bottom: 0;">
+          <label class="field__label" for="location">Lokalizacja</label>
+          <select class="field__select" id="location">
+            <option value="">Wszystkie</option>
+            <option>Sala 3</option>
+            <option>Sala 4</option>
+            <option>Sala 12</option>
+            <option>Magazyn</option>
+          </select>
+        </div>
+        <button class="btn" type="submit">Szukaj</button>
+      </div>
+    </form>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Numer</th>
+          <th>Nazwa</th>
+          <th>Kategoria</th>
+          <th>Lokalizacja</th>
+          <th>Status</th>
+          <th style="text-align:right;">Akcje</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>PRJ-001</td>
+          <td>Projektor Epson EB-X500</td>
+          <td>Projektor</td>
+          <td>Sala 12</td>
+          <td><span class="status">Dostępny</span></td>
+          <td class="actions"><button class="btn">Edytuj</button> <button class="btn">Usuń</button></td>
+        </tr>
+        <tr>
+          <td>LAP-014</td>
+          <td>Laptop Dell Latitude 5440</td>
+          <td>Laptop</td>
+          <td>Sala 4</td>
+          <td><span class="status status--loaned">Wypożyczony</span></td>
+          <td class="actions"><button class="btn">Edytuj</button></td>
+        </tr>
+        <tr>
+          <td>PRJ-002</td>
+          <td>Projektor BenQ MH560</td>
+          <td>Projektor</td>
+          <td>Magazyn</td>
+          <td><span class="status">W naprawie</span></td>
+          <td class="actions"><button class="btn">Edytuj</button> <button class="btn">Usuń</button></td>
+        </tr>
+        <tr>
+          <td>TAB-007</td>
+          <td>Tablet Lenovo Tab M10</td>
+          <td>Tablet</td>
+          <td>Sala 3</td>
+          <td><span class="status status--retired">Zutylizowany</span></td>
+          <td class="actions"><button class="btn">Usuń</button></td>
+        </tr>
+        <tr>
+          <td>LAP-015</td>
+          <td>Laptop HP ProBook 450</td>
+          <td>Laptop</td>
+          <td>Sala 4</td>
+          <td><span class="status">Dostępny</span></td>
+          <td class="actions"><button class="btn">Edytuj</button> <button class="btn">Usuń</button></td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="muted" style="margin-top: 8px;">Widok administratora: dodawanie, edycja i usuwanie. Zwykły użytkownik widzi tylko tabelę.</p>
+  </div>
+</body>
+</html>
