@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wypożyczenia — EduResource Manager</title>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+  <nav class="nav">
+    <a href="index.html">Zasoby</a>
+    <a href="loans.html" class="is-active">Wypożyczenia</a>
+    <a href="reports.html">Raporty</a>
+    <span class="nav-user">Zalogowany: Administrator</span>
+  </nav>
+
+  <div class="container">
+    <div class="page-header">
+      <h1>Wypożyczenia</h1>
+      <button class="btn btn--primary">Wypożycz zasób</button>
+    </div>
+
+    <h2>Aktualne</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Numer</th>
+          <th>Zasób</th>
+          <th>Wypożyczający</th>
+          <th>Data wypożyczenia</th>
+          <th>Przewidywany zwrot</th>
+          <th style="text-align:right;">Akcje</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>LAP-014</td>
+          <td>Laptop Dell Latitude 5440</td>
+          <td>j.kowalski</td>
+          <td>2026-11-05</td>
+          <td>2026-11-19</td>
+          <td class="actions"><button class="btn">Zwróć</button></td>
+        </tr>
+        <tr>
+          <td>PRJ-001</td>
+          <td>Projektor Epson EB-X500</td>
+          <td>m.nowak</td>
+          <td>2026-11-10</td>
+          <td>2026-11-24</td>
+          <td class="actions"><button class="btn">Zwróć</button></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Zakończone</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Numer</th>
+          <th>Zasób</th>
+          <th>Wypożyczający</th>
+          <th>Data wypożyczenia</th>
+          <th>Data zwrotu</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>TAB-003</td>
+          <td>Tablet Samsung Galaxy Tab A8</td>
+          <td>a.wisniewska</td>
+          <td>2026-10-12</td>
+          <td>2026-10-26</td>
+        </tr>
+        <tr>
+          <td>LAP-013</td>
+          <td>Laptop Lenovo ThinkPad L14</td>
+          <td>j.kowalski</td>
+          <td>2026-09-28</td>
+          <td>2026-10-12</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="muted" style="margin-top: 8px;">Wypożyczenie zmienia status zasobu na „Wypożyczony”, zwrót przywraca „Dostępny”.</p>
+  </div>
+</body>
+</html>

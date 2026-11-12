@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Raporty — EduResource Manager</title>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+  <nav class="nav">
+    <a href="index.html">Zasoby</a>
+    <a href="loans.html">Wypożyczenia</a>
+    <a href="reports.html" class="is-active">Raporty</a>
+    <span class="nav-user">Zalogowany: Administrator</span>
+  </nav>
+
+  <div class="container">
+    <div class="page-header">
+      <h1>Raporty</h1>
+      <span class="muted">Wygenerowano: 2026-11-12</span>
+    </div>
+
+    <h2>Uszkodzone zasoby</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Numer</th>
+          <th>Nazwa</th>
+          <th>Kategoria</th>
+          <th>Lokalizacja</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>PRJ-002</td>
+          <td>Projektor BenQ MH560</td>
+          <td>Projektor</td>
+          <td>Magazyn</td>
+          <td><span class="status">W naprawie</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Zasoby bez aktualnego testu</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Numer</th>
+          <th>Nazwa</th>
+          <th>Kategoria</th>
+          <th>Ostatni test</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>LAP-015</td>
+          <td>Laptop HP ProBook 450</td>
+          <td>Laptop</td>
+          <td class="muted">Brak danych</td>
+          <td><span class="status">Dostępny</span></td>
+        </tr>
+        <tr>
+          <td>TAB-007</td>
+          <td>Tablet Lenovo Tab M10</td>
+          <td>Tablet</td>
+          <td class="muted">2025-03-14</td>
+          <td><span class="status status--retired">Zutylizowany</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="muted" style="margin-top: 8px;">Raport dostępny tylko dla administratora.</p>
+  </div>
+</body>
+</html>
