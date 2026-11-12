@@ -13,13 +13,12 @@
     <a href="index.html">Zasoby</a>
     <a href="loans.html">Wypożyczenia</a>
     <a href="reports.html" class="is-active">Raporty</a>
-    <span class="nav-user">Zalogowany: Administrator</span>
+    <span class="nav-user" id="nav-user"></span><!-- заполнит auth.js -->
   </nav>
 
   <div class="container">
     <div class="page-header">
       <h1>Raporty</h1>
-      <span class="muted">Wygenerowano: 2026-11-12</span>
     </div>
 
     <h2>Uszkodzone zasoby</h2>
@@ -33,14 +32,11 @@
           <th>Status</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody id="report-damaged-body">
         <tr>
-          <td>PRJ-002</td>
-          <td>Projektor BenQ MH560</td>
-          <td>Projektor</td>
-          <td>Magazyn</td>
-          <td><span class="status">W naprawie</span></td>
+          <td colspan="5" class="muted">Brak uszkodzonych zasobów.</td>
         </tr>
+        <!-- строки рендерит js/reports.js из ответа api/reports.php -->
       </tbody>
     </table>
 
@@ -55,21 +51,11 @@
           <th>Status</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody id="report-untested-body">
         <tr>
-          <td>LAP-015</td>
-          <td>Laptop HP ProBook 450</td>
-          <td>Laptop</td>
-          <td class="muted">Brak danych</td>
-          <td><span class="status">Dostępny</span></td>
+          <td colspan="5" class="muted">Brak zasobów bez aktualnego testu.</td>
         </tr>
-        <tr>
-          <td>TAB-007</td>
-          <td>Tablet Lenovo Tab M10</td>
-          <td>Tablet</td>
-          <td class="muted">2025-03-14</td>
-          <td><span class="status status--retired">Zutylizowany</span></td>
-        </tr>
+        <!-- строки рендерит js/reports.js из ответа api/reports.php -->
       </tbody>
     </table>
     <p class="muted" style="margin-top: 8px;">Raport dostępny tylko dla administratora.</p>
