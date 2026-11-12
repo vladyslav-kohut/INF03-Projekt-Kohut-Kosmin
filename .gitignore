@@ -1,1 +1,17 @@
+# Dokumentacja wewnętrzna (nie publikujemy w repo)
+docs/IMPLEMENTATION_PLAN.md
 
+# Lokalna konfiguracja środowiska
+api/config/database.php
+
+# Pliki systemowe
+.DS_Store
+Thumbs.db
+
+# Środowiska i edytory
+.idea/
+.vscode/
+*.swp
+
+# Logi
+*.log
