@@ -1,63 +1,37 @@
-# Analiza wykonalności i zasobów
+# Analiza ryzyka, kosztów i zasobów
 
-## 1. Stos technologiczny
+## Stos i zasoby
 
-Projekt będzie realizowany jako aplikacja internetowa.
+Projekt jest lokalną aplikacją internetową. Używa XAMPP (Apache, PHP i MySQL/MariaDB), mysqli, HTML5, CSS3, czystego JavaScriptu, Git/GitHub, Trello, Visual Studio Code i przeglądarki. Narzędzia są bezpłatne. Koszt licencji: 0 zł. Sprzęt: komputery zespołu i komputer szkolny.
 
-W projekcie zostaną wykorzystane:
-- HTML – tworzenie struktury stron,
-- CSS – stylowanie i wygląd stron,
-- JavaScript – obsługa interakcji użytkownika,
-- PHP – logika aplikacji po stronie serwera,
-- MySQL – przechowywanie danych,
-- phpMyAdmin – zarządzanie bazą danych,
-- Git i GitHub – kontrola wersji oraz współpraca w zespole.
+Środowisko zostało sprawdzone przez zespół: Apache i MySQL uruchamiają się, PHP działa, a aplikację można otworzyć przez localhost.
 
-## 2. Analiza ryzyka
+## Ryzyka
 
-| Zagrożenie | Możliwe skutki | Sposób mitygacji |
+| Ryzyko | Skutek | Co robimy |
 |---|---|---|
-| Brak kompatybilności wersji środowiska | Problemy z uruchomieniem projektu | Korzystanie z tych samych wersji PHP, MySQL oraz narzędzi przez członków zespołu |
-| Opóźnienia w integracji modułów | Opóźnienie realizacji projektu | Regularne łączenie i testowanie gotowych modułów |
-| Utrata lub nadpisanie kodu | Utrata wykonanej pracy | Regularne wykonywanie commitów i pushowanie zmian do GitHub |
-| Błędy w bazie danych | Nieprawidłowe działanie aplikacji | Testowanie zapytań SQL oraz wykonywanie kopii zapasowych bazy danych |
+| Różne wersje XAMPP/PHP lub MySQL | Projekt działa u jednej osoby, ale nie u drugiej | Obaj używają tej samej wersji XAMPP; sprawdzają projekt po każdym większym połączeniu zmian |
+| Opóźniona integracja frontendu i backendu | Funkcje nie działają razem przed terminem | Uzgadniamy nazwy plików API i format JSON przed implementacją; integrujemy małe części na bieżąco |
+| Utrata lub nadpisanie kodu | Trzeba odtwarzać pracę | Każde zadanie ma osobną gałąź; robimy małe commity i pushujemy je do GitHub |
+| Błąd w schemacie lub danych bazy | Niepoprawne wyniki albo utrata danych | Zmiany schematu zapisujemy w SQL; import testujemy przed dodaniem danych; przed większą zmianą robimy kopię bazy |
 
-## 3. Koszty osobowe
+## Nakład pracy
 
-Przewidywany nakład pracy na realizację projektu:
+Zadanie szkolne obejmuje 14 godzin lekcyjnych dla zespołu. Przy dwóch osobach jest to maksymalnie 28 osobogodzin pracy podczas zajęć. Każdy etap niżej oznacza czas zespołu, a nie czas jednej osoby.
 
-| Zadanie | Szacowany czas |
-|---|---:|
-| Analiza wymagań | 4 h |
-| Przygotowanie projektu | 4 h |
-| Projektowanie interfejsu | 8 h |
-| Implementacja HTML i CSS | 10 h |
-| Implementacja JavaScript | 8 h |
-| Implementacja PHP | 12 h |
-| Przygotowanie bazy danych | 6 h |
-| Integracja modułów | 6 h |
-| Testowanie | 8 h |
-| Poprawki | 6 h |
-| Dokumentacja | 4 h |
-| **Łącznie** | **76 h** |
+| Faza | Zakres | Godziny lekcyjne |
+|---|---|---:|
+| I. Planowanie | Zakres, ryzyka, koszty, role, narzędzia | 2 |
+| II. Analiza i projektowanie | Wymagania, ERD, makiety, backlog | 2 |
+| III. Implementacja | Backend, frontend i integracja | 6 |
+| IV. Testowanie i odbiór | Testy funkcjonalne, poprawki, odbiór | 2 |
+| V. Dokumentacja i prezentacja | README, dokumentacja, pokaz | 2 |
+| **Łącznie** |  | **14** |
 
-Podane wartości są szacunkowe i mogą ulec zmianie w zależności od postępu prac.
+Jeżeli zespół będzie pracować poza zajęciami, ten dodatkowy czas należy zapisać osobno; nie jest wliczony do powyższych 14 godzin.
 
-## 4. Wymagane oprogramowanie i infrastruktura
+## Koszty osobowe i zasobowe
 
-### Oprogramowanie
-- Visual Studio Code,
-- PHP,
-- MySQL,
-- phpMyAdmin,
-- Git,
-- GitHub,
-- przeglądarka internetowa,
-- lokalne środowisko serwerowe, np. XAMPP.
-
-### Infrastruktura
-- komputery członków zespołu,
-- dostęp do Internetu,
-- lokalny serwer do uruchamiania aplikacji,
-- repozytorium GitHub,
-- baza danych MySQL.
+- Czas zespołu w ramach zadania: 14 godzin lekcyjnych (28 osobogodzin dla dwóch osób).
+- Oprogramowanie i usługi: 0 zł za licencje, ponieważ używane narzędzia są bezpłatne.
+- Sprzęt i Internet: komputery członków zespołu / komputer szkolny oraz połączenie z Internetem.
