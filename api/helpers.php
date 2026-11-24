@@ -66,3 +66,14 @@ function tekst_z_danych($dane, $pole, $limit)
 
     return $wartosc;
 }
+
+function zapisz_historie_dzialan($polaczenie, $idWykonujacego, $typZdarzenia, $typObiektu, $idObiektu, $opis)
+{
+    $stmt = $polaczenie->prepare(
+        'INSERT INTO historia_dzialan
+         (id_wykonujacego, typ_zdarzenia, typ_obiektu, id_obiektu, opis)
+         VALUES (?, ?, ?, ?, ?)'
+    );
+    $stmt->bind_param('issis', $idWykonujacego, $typZdarzenia, $typObiektu, $idObiektu, $opis);
+    $stmt->execute();
+}
