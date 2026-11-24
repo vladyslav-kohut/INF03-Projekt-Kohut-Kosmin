@@ -1,37 +1,32 @@
 # Wymagania EduResource Manager
 
-## Użytkownicy
-- **Administrator** zarządza zasobami, rejestruje wypożyczenia i korzysta z raportów.
-- **Użytkownik** przegląda zasoby i swoje wypożyczenia; może potwierdzić zwrot przypisanego zasobu.
+## Role i widoki
+- **Użytkownik** widzi własne wnioski i wypożyczenia oraz może złożyć wniosek o dostępny zasób.
+- **Administrator** ma chronioną panelem rolę: zarządza zasobami, rozpatruje wnioski, widzi wszystkie wypożyczenia i historię działań.
 
 ## Wymagania funkcjonalne
 | ID | Wymaganie |
 |---|---|
-| FR-01 | Logowanie adresem e-mail i hasłem. |
-| FR-02 | Rozróżnienie ról Administrator i Użytkownik oraz ograniczenie funkcji administracyjnych. |
-| FR-03 | Zalogowany użytkownik może wyświetlić listę aktywnych zasobów. |
-| FR-04 | Administrator może dodawać, edytować i usuwać (archiwizować) zasoby. |
-| FR-05 | Zasób ma nazwę, numer seryjny/katalogowy, kategorię, stan techniczny, lokalizację i status. |
-| FR-06 | Wyszukiwanie zasobów po nazwie/numerze i filtrowanie po kategorii/lokalizacji. |
-| FR-07 | Administrator może przypisać dostępny zasób użytkownikowi i ustawić termin zwrotu. |
-| FR-08 | Nie można wypożyczyć zasobu niedostępnego, uszkodzonego ani już wypożyczonego. |
-| FR-09 | Administrator lub właściciel aktywnego wypożyczenia może zarejestrować zwrot. |
-| FR-10 | Lista wypożyczeń rozróżnia aktywne i zakończone; użytkownik widzi tylko swoje. |
+| FR-01 | Logowanie e-mailem i hasłem oraz wylogowanie. |
+| FR-02 | System rozróżnia role administratora i użytkownika; backend kontroluje uprawnienia. |
+| FR-03 | Zalogowany użytkownik może przeglądać, wyszukiwać i filtrować aktywne zasoby. |
+| FR-04 | Administrator może dodawać, edytować i archiwizować zasoby. |
+| FR-05 | Użytkownik może złożyć wniosek o dostępny zasób i podać planowany termin zwrotu. |
+| FR-06 | Administrator może zaakceptować lub odrzucić oczekujący wniosek. |
+| FR-07 | Akceptacja wniosku tworzy wypożyczenie tylko wtedy, gdy zasób nadal jest dostępny. |
+| FR-08 | System zapisuje kto, jaki zasób i kiedy wypożyczył oraz termin i faktyczną datę zwrotu. |
+| FR-09 | Użytkownik widzi tylko własne wnioski i wypożyczenia; administrator widzi wszystkie. |
+| FR-10 | Administrator może przeglądać historię działań: rozpatrzone wnioski, zmiany zasobów i zwroty. |
 | FR-11 | Administrator może wyświetlić raport zasobów uszkodzonych i nieprzetestowanych. |
 | FR-12 | Status zasobu: dostępny, wypożyczony, w naprawie lub zutylizowany. |
 
 ## Wymagania niefunkcjonalne
-| ID | Wymaganie |
-|---|---|
-| NFR-01 | Aplikacja działa lokalnie przez Apache w XAMPP, bez frameworków. |
-| NFR-02 | Dane są przechowywane w MySQL/MariaDB z kodowaniem UTF-8. |
-| NFR-03 | PHP używa mysqli; zapytania z danymi użytkownika korzystają z prepared statements. |
-| NFR-04 | Hasła są przechowywane jako skróty przez password_hash i sprawdzane przez password_verify. |
-| NFR-05 | Uprawnienia administracyjne są sprawdzane po stronie PHP. |
-| NFR-06 | Backend ponownie waliduje dane z formularzy. |
-| NFR-07 | Frontend komunikuje się z PHP przez HTTP i JSON, bez frameworka JS. |
-| NFR-08 | Interfejs ma czytelne polskie etykiety i działa w aktualnej przeglądarce komputerowej. |
-| NFR-09 | Błędy nie ujawniają haseł, konfiguracji ani szczegółów SQL. |
+- Aplikacja działa lokalnie w XAMPP: Apache, PHP i MySQL/MariaDB.
+- Frontend używa HTML, CSS i czystego JavaScriptu; komunikacja z PHP odbywa się przez HTTP i JSON.
+- PHP używa mysqli i prepared statements; hasła zapisuje przez password_hash.
+- Dane wejściowe są walidowane po stronie przeglądarki i ponownie po stronie PHP.
+- Interfejs, etykiety i komunikaty są w języku polskim.
+- Błędy nie ujawniają haseł ani szczegółów bazy danych.
 
-## Kryterium odbioru MVP
-Można zalogować się z odpowiednią rolą, przeglądać i filtrować zasoby, zarządzać nimi jako administrator, obsłużyć wypożyczenie i zwrot oraz wyświetlić wymagane raporty.
+## Zakres historii
+Tabela wypożyczeń przechowuje faktyczne wydania i zwroty. Osobna historia działań administratora zapisuje kto i kiedy wykonał ważną zmianę.
