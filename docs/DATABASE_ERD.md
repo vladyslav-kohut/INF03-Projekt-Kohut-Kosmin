@@ -59,7 +59,7 @@ erDiagram
 
     HISTORIA_DZIALAN {
         int id_zdarzenia PK
-        int id_administratora FK
+        int id_wykonujacego FK
         varchar typ_zdarzenia
         varchar typ_obiektu
         int id_obiektu
@@ -72,9 +72,9 @@ erDiagram
 - `uzytkownicy`: konta i role.
 - `zasoby`: wyposażenie szkoły.
 - `wnioski_wypozyczenia`: prośby użytkowników i decyzje administratora.
-- `wypozyczenia`: faktycznie wydane rzeczy; `data_zwrotu` pusta oznacza, że rzecz nie została zwrócona.
-- `historia_dzialan`: ważne czynności administratora, np. zaakceptowanie prośby, zmiana zasobu lub rejestracja zwrotu.
+- `wypozyczenia`: faktycznie wydane rzeczy; pusta data zwrotu oznacza aktywne wypożyczenie.
+- `historia_dzialan`: kto wykonał ważną czynność, np. złożył lub rozpatrzył wniosek, wydał albo zwrócił rzecz.
 
-Po zaakceptowaniu wniosku powstaje jeden wpis w `wypozyczenia`. Odrzucony wniosek zostaje w historii, ale nie tworzy wypożyczenia. Administrator widzi całą historię; zwykły użytkownik tylko własne wnioski i wypożyczenia.
+Po zaakceptowaniu wniosku powstaje wpis w `wypozyczenia`. Każda ważna czynność jest zapisywana z ID osoby, która ją wykonała. Administrator widzi całą historię, a zwykły użytkownik tylko własne wnioski i wypożyczenia.
 
 Nazwy tabel i kolumn są zgodne z `database/schema.sql`.
