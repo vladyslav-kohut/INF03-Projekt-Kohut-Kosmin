@@ -66,14 +66,14 @@ CREATE TABLE IF NOT EXISTS wypozyczenia (
 
 CREATE TABLE IF NOT EXISTS historia_dzialan (
     id_zdarzenia INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    id_administratora INT UNSIGNED NOT NULL,
+    id_wykonujacego INT UNSIGNED NOT NULL,
     typ_zdarzenia VARCHAR(60) NOT NULL,
     typ_obiektu VARCHAR(40) NOT NULL,
     id_obiektu INT UNSIGNED NULL,
     opis VARCHAR(500) NOT NULL,
     data_zdarzenia TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     INDEX idx_historia_data (data_zdarzenia),
-    INDEX idx_historia_admin (id_administratora),
+    INDEX idx_historia_wykonujacy (id_wykonujacego),
     INDEX idx_historia_typ (typ_zdarzenia),
-    CONSTRAINT fk_historia_administrator FOREIGN KEY (id_administratora) REFERENCES uzytkownicy(id_uzytkownika)
+    CONSTRAINT fk_historia_wykonujacy FOREIGN KEY (id_wykonujacego) REFERENCES uzytkownicy(id_uzytkownika)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
