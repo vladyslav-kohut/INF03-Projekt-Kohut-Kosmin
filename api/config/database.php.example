@@ -1,0 +1,24 @@
+<?php
+// Skopiuj ten plik jako database.php i ustaw dane swojej bazy XAMPP.
+$host = 'localhost';
+$uzytkownik_bazy = 'root';
+$haslo_bazy = '';
+$nazwa_bazy = 'eduresource_manager';
+
+mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+
+try {
+    $polaczenie = new mysqli(
+        $host,
+        $uzytkownik_bazy,
+        $haslo_bazy,
+        $nazwa_bazy
+    );
+    $polaczenie->set_charset('utf8mb4');
+} catch (mysqli_sql_exception $blad) {
+    // Szczegóły połączenia nie powinny trafiać do odpowiedzi dla przeglądarki.
+    http_response_code(500);
+    header('Content-Type: application/json; charset=utf-8');
+    echo json_encode(['blad' => 'Nie można połączyć się z bazą danych.']);
+    exit;
+}
