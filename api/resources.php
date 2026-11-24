@@ -131,6 +131,7 @@ if ($metoda === 'PATCH') {
         throw $blad;
     }
 
+    zapisz_historie_dzialan($polaczenie, (int) $_SESSION['uzytkownik']['id'], 'zmieniono_zasob', 'zasob', (int) $id, 'Zmieniono dane zasobu: ' . $nazwa);
     odpowiedz_json(['dane' => ['zaktualizowano' => true]]);
 }
 
@@ -156,6 +157,7 @@ if ($metoda === 'DELETE') {
     $stmt->bind_param('i', $id);
     $stmt->execute();
 
+    zapisz_historie_dzialan($polaczenie, (int) $_SESSION['uzytkownik']['id'], 'zarchiwizowano_zasob', 'zasob', (int) $id, 'Zarchiwizowano zasób.');
     odpowiedz_json(['dane' => ['zarchiwizowano' => true]]);
 }
 
