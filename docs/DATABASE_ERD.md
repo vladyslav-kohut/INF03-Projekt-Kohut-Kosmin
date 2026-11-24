@@ -1,52 +1,80 @@
 # Model bazy danych — ERD
 
-## Diagram
-
 ```mermaid
 erDiagram
-    USERS ||--o{ LOANS : "otrzymuje"
-    USERS ||--o{ LOANS : "wydaje"
-    RESOURCES ||--o{ LOANS : "historia"
+    UZYTKOWNICY ||--o{ WNIOSKI_WYPOZYCZENIA : sklada
+    ZASOBY ||--o{ WNIOSKI_WYPOZYCZENIA : dotyczy
+    UZYTKOWNICY ||--o{ WNIOSKI_WYPOZYCZENIA : rozpatruje
+    WNIOSKI_WYPOZYCZENIA ||--o| WYPOZYCZENIA : tworzy
+    ZASOBY ||--o{ WYPOZYCZENIA : historia
+    UZYTKOWNICY ||--o{ WYPOZYCZENIA : wypozycza
+    UZYTKOWNICY ||--o{ WYPOZYCZENIA : wydaje
+    UZYTKOWNICY ||--o{ HISTORIA_DZIALAN : wykonuje
 
-    USERS {
-        int id PK
-        varchar name
+    UZYTKOWNICY {
+        int id_uzytkownika PK
+        varchar imie_i_nazwisko
         varchar email UK
-        varchar password_hash
-        enum role
-        boolean is_active
-        timestamp created_at
+        varchar haslo_hash
+        enum rola
+        boolean aktywny
+        timestamp data_utworzenia
     }
 
-    RESOURCES {
-        int id PK
-        varchar name
-        varchar serial_number UK
-        varchar category
-        enum condition_status
-        varchar location
+    ZASOBY {
+        int id_zasobu PK
+        varchar nazwa
+        varchar numer_katalogowy UK
+        varchar kategoria
+        enum stan_techniczny
+        varchar lokalizacja
         enum status
-        boolean is_active
-        timestamp created_at
-        timestamp updated_at
+        boolean aktywny
+        timestamp data_utworzenia
+        timestamp data_aktualizacji
     }
 
-    LOANS {
-        int id PK
-        int resource_id FK
-        int user_id FK
-        int issued_by FK
-        timestamp checkout_date
-        date due_date
-        datetime return_date
+    WNIOSKI_WYPOZYCZENIA {
+        int id_wniosku PK
+        int id_zasobu FK
+        int id_wnioskujacego FK
+        date planowany_termin_zwrotu
+        enum status
+        int id_rozpatrujacego FK
+        datetime data_rozpatrzenia
+        varchar komentarz_administratora
+        timestamp data_zlozenia
+    }
+
+    WYPOZYCZENIA {
+        int id_wypozyczenia PK
+        int id_wniosku FK_UK
+        int id_zasobu FK
+        int id_wypozyczajacego FK
+        int id_wydajacego FK
+        timestamp data_wydania
+        date termin_zwrotu
+        datetime data_zwrotu
+    }
+
+    HISTORIA_DZIALAN {
+        int id_zdarzenia PK
+        int id_administratora FK
+        varchar typ_zdarzenia
+        varchar typ_obiektu
+        int id_obiektu
+        varchar opis
+        timestamp data_zdarzenia
     }
 ```
 
-## Opis
-- Jeden użytkownik może mieć wiele wypożyczeń; wypożyczenie wskazuje jednego użytkownika przez user_id.
-- Administrator wydający zasób jest zapisany przez issued_by.
-- Zasób może mieć wiele wpisów historii w różnym czasie, ale tylko jedno aktywne wypożyczenie naraz.
-- return_date = NULL oznacza wypożyczenie aktywne.
-- Usunięcie w aplikacji oznacza archiwizację przez is_active = 0, aby zachować historię.
+## Co oznaczają tabele
+- `uzytkownicy`: konta i role.
+- `zasoby`: wyposażenie szkoły.
+- `wnioski_wypozyczenia`: prośby użytkowników i decyzje administratora.
+- `wypozyczenia`: faktycznie wydane rzeczy; `data_zwrotu` pusta oznacza, że rzecz nie została zwrócona.
+- `historia_dzialan`: ważne czynności administratora, np. zaakceptowanie prośby, zmiana zasobu lub rejestracja zwrotu.
 
-Nazwy tabel i pól odpowiadają database/schema.sql.
+Po zaakceptowaniu wniosku powstaje jeden wpis w `wypozyczenia`. Odrzucony wniosek zostaje w historii, ale nie tworzy wypożyczenia. Administrator widzi całą historię; zwykły użytkownik tylko własne wnioski i wypożyczenia.
+
+Nazwy tabel i kolumn są zgodne z `database/schema.sql`.
