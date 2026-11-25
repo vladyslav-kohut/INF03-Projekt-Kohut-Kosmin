@@ -455,6 +455,12 @@
     flex-shrink: 0;
 }
 
+.podsumowanie-raportu {
+    font-size: 13px;
+    color: var(--tekst-mgla);
+    margin-bottom: 10px;
+}
+
 .ukryj {
     display: none !important;
 }
