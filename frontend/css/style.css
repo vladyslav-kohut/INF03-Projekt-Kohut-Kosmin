@@ -201,14 +201,14 @@ a:hover {
 
 .siatka-filtrow {
     display: grid;
-    grid-template-columns: minmax(220px, 2fr) repeat(3, minmax(150px, 1fr)) auto;
+    grid-template-columns: minmax(220px, 2fr) repeat(4, minmax(135px, 1fr)) auto;
     gap: 12px;
     align-items: end;
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 1200px) {
     .siatka-filtrow {
-        grid-template-columns: repeat(2, minmax(160px, 1fr));
+        grid-template-columns: repeat(3, minmax(160px, 1fr));
     }
 }
 
