@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Wnioski i wypożyczenia — EduResource Manager</title>
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+    <div class="app">
+        <aside class="sidebar">
+            <div class="sidebar__marka">
+                EduResource Manager
+                <span>Zasoby szkolne</span>
+            </div>
+            <nav class="sidebar__nawigacja">
+                <a class="sidebar__link" href="index.html">Zasoby</a>
+                <a class="sidebar__link" href="loans.html">Wnioski i wypożyczenia</a>
+                <a class="sidebar__link ukryj" href="reports.html" data-admin>Raporty</a>
+            </nav>
+            <div class="sidebar__stopka">Projekt szkolny — INF.04</div>
+        </aside>
+
+        <div class="app--glowny">
+            <header class="naglowek">
+                <div class="naglowek__tytul">
+                    <h1>Wnioski i wypożyczenia</h1>
+                    <span class="naglowek__podtytul">Składanie próśb, rozpatrywanie wniosków i zwroty</span>
+                </div>
+                <div class="naglowek__uzytkownik">
+                    <div class="naglowek__dane">
+                        <strong id="uzytkownik-nazwa">…</strong>
+                        <span id="uzytkownik-rola">…</span>
+                    </div>
+                    <button class="przycisk przycisk--jasny przycisk--maly" type="button" data-wyloguj>
+                        Wyloguj
+                    </button>
+                </div>
+            </header>
+
+            <main class="tresc">
+                <div class="karta-podsumowania">
+                    <div class="karta-podsumowania__element">
+                        <div class="karta-podsumowania__etykieta">Wnioski oczekujące</div>
+                        <div class="karta-podsumowania__wartosc" id="podsumowanie-oczekujace">—</div>
+                    </div>
+                    <div class="karta-podsumowania__element">
+                        <div class="karta-podsumowania__etykieta">Aktywne wypożyczenia</div>
+                        <div class="karta-podsumowania__wartosc" id="podsumowanie-aktywne">—</div>
+                    </div>
+                    <div class="karta-podsumowania__element">
+                        <div class="karta-podsumowania__etykieta">Moje wnioski</div>
+                        <div class="karta-podsumowania__wartosc" id="podsumowanie-moje">—</div>
+                    </div>
+                </div>
+
+                <section class="sekcja">
+                    <div class="sekcja__naglowek">
+                        <div>
+                            <h2>Nowy wniosek o wypożyczenie</h2>
+                            <p class="sekcja__opis">Wniosek trafia do administratora, który decyduje o wydaniu zasobu.</p>
+                        </div>
+                    </div>
+
+                    <div class="komunikat komunikat--info" id="formularz-wniosek-info" hidden></div>
+
+                    <form id="formularz-wniosek" novalidate>
+                        <div class="formularz-wiersz">
+                            <div class="pole" id="pole-wniosek-zasob">
+                                <label class="pole__etykieta" for="wniosek-zasob">Dostępny zasób *</label>
+                                <select class="wybierz" id="wniosek-zasob">
+                                    <option value="">Wybierz zasób</option>
+                                </select>
+                                <span class="pole__blad ukryj">Wybierz zasób z listy.</span>
+                            </div>
+
+                            <div class="pole" id="pole-wniosek-termin">
+                                <label class="pole__etykieta" for="wniosek-termin">Planowany termin zwrotu *</label>
+                                <input class="wejscie" type="date" id="wniosek-termin">
+                                <span class="pole__blad ukryj">Termin nie może być z przeszłości.</span>
+                            </div>
+
+                            <button class="przycisk" type="submit" id="przycisk-wniosek">
+                                Złóż wniosek
+                            </button>
+                        </div>
+                    </form>
+                </section>
+
+                <section class="sekcja">
+                    <div class="sekcja__naglowek">
+                        <div>
+                            <h2>Wnioski</h2>
+                            <p class="sekcja__opis" id="opis-wnioski">…</p>
+                        </div>
+                    </div>
+                    <div id="tabela-wnioski"></div>
+                </section>
+
+                <section class="sekcja">
+                    <div class="sekcja__naglowek">
+                        <div>
+                            <h2>Wypożyczenia</h2>
+                            <p class="sekcja__opis" id="opis-wypozyczenia">…</p>
+                        </div>
+                    </div>
+                    <div id="tabela-wypozyczenia"></div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <div class="modal" id="modal-decyzja" hidden>
+        <div class="modal__panel">
+            <div class="modal__naglowek">
+                <h2>Rozpatrzenie wniosku</h2>
+                <button class="modal__zamknij" type="button" data-zamknij aria-label="Zamknij">&times;</button>
+            </div>
+            <div class="modal__tresc">
+                <div class="komunikat komunikat--blad" id="modal-decyzja-blad" hidden></div>
+                <div id="modal-decyzja-szczegoly"></div>
+                <div class="pole">
+                    <label class="pole__etykieta" for="decyzja-komentarz">Komentarz administratora</label>
+                    <textarea class="obszar" id="decyzja-komentarz" rows="3" maxlength="500"
+                              placeholder="Opcjonalne uzasadnienie decyzji"></textarea>
+                </div>
+            </div>
+            <div class="modal__stopka">
+                <button class="przycisk przycisk--jasny" type="button" data-zamknij>Anuluj</button>
+                <button class="przycisk przycisk--zagrozenie" type="button" id="przycisk-odrzuc">
+                    Odrzuć
+                </button>
+                <button class="przycisk" type="button" id="przycisk-zaakceptuj">
+                    Zaakceptuj
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="modal-zwrot" hidden>
+        <div class="modal__panel">
+            <div class="modal__naglowek">
+                <h2>Rejestracja zwrotu</h2>
+                <button class="modal__zamknij" type="button" data-zamknij aria-label="Zamknij">&times;</button>
+            </div>
+            <div class="modal__tresc">
+                <p>Czy na pewno rejestrujesz zwrot zasobu <strong id="zwrot-nazwa"></strong>?</p>
+                <div class="pole">
+                    <label class="pole__etykieta" for="zwrot-stan">Stan techniczny po zwrocie</label>
+                    <select class="wybierz" id="zwrot-stan">
+                        <option value="sprawny">Sprawny — zasób wraca do użycia</option>
+                        <option value="uszkodzony">Uszkodzony — zasób trafia do naprawy</option>
+                        <option value="niesprawdzony">Niesprawdzony — wymaga sprawdzenia</option>
+                    </select>
+                    <span class="pole__podpowiedz">
+                        Uszkodzony sprzęt po zwrocie otrzymuje status „W naprawie”.
+                    </span>
+                </div>
+            </div>
+            <div class="modal__stopka">
+                <button class="przycisk przycisk--jasny" type="button" data-zamknij>Anuluj</button>
+                <button class="przycisk" type="button" id="przycisk-zwrot-potwierdz">
+                    Zarejestruj zwrot
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/loans.js"></script>
+</body>
+</html>

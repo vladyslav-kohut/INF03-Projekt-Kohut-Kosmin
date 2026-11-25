@@ -439,6 +439,22 @@
     margin-top: 4px;
 }
 
+.formularz-wiersz {
+    display: flex;
+    gap: 12px;
+    align-items: flex-end;
+    flex-wrap: wrap;
+}
+
+.formularz-wiersz .pole {
+    min-width: 230px;
+    flex: 1;
+}
+
+.formularz-wiersz .przycisk {
+    flex-shrink: 0;
+}
+
 .ukryj {
     display: none !important;
 }
