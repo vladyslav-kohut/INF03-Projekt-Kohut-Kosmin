@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Zasoby — EduResource Manager</title>
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+    <div class="app">
+        <aside class="sidebar">
+            <div class="sidebar__marka">
+                EduResource Manager
+                <span>Zasoby szkolne</span>
+            </div>
+            <nav class="sidebar__nawigacja">
+                <a class="sidebar__link" href="index.html">Zasoby</a>
+                <a class="sidebar__link" href="loans.html">Wnioski i wypożyczenia</a>
+                <a class="sidebar__link ukryj" href="reports.html" data-admin>Raporty</a>
+            </nav>
+            <div class="sidebar__stopka">Projekt szkolny — INF.04</div>
+        </aside>
+
+        <div class="app--glowny">
+            <header class="naglowek">
+                <div class="naglowek__tytul">
+                    <h1>Zasoby szkolne</h1>
+                    <span class="naglowek__podtytul">Przeglądaj, wyszukuj i filtruj wyposażenie szkoły</span>
+                </div>
+                <div class="naglowek__uzytkownik">
+                    <div class="naglowek__dane">
+                        <strong id="uzytkownik-nazwa">…</strong>
+                        <span id="uzytkownik-rola">…</span>
+                    </div>
+                    <button class="przycisk przycisk--jasny przycisk--maly" type="button" data-wyloguj>
+                        Wyloguj
+                    </button>
+                </div>
+            </header>
+
+            <main class="tresc">
+                <section class="sekcja">
+                    <div class="sekcja__naglowek">
+                        <div>
+                            <h2>Lista zasobów</h2>
+                            <p class="sekcja__opis">Wyszukiwanie działa po nazwie i numerze katalogowym.</p>
+                        </div>
+                        <button class="przycisk ukryj" type="button" id="przycisk-dodaj" data-admin>
+                            Dodaj zasób
+                        </button>
+                    </div>
+
+                    <div class="siatka-filtrow">
+                        <div class="pole">
+                            <label class="pole__etykieta" for="filtr-szukaj">Szukaj</label>
+                            <input class="wejscie" type="search" id="filtr-szukaj"
+                                   placeholder="Nazwa lub numer katalogowy">
+                        </div>
+                        <div class="pole">
+                            <label class="pole__etykieta" for="filtr-kategoria">Kategoria</label>
+                            <select class="wybierz" id="filtr-kategoria">
+                                <option value="">Wszystkie kategorie</option>
+                            </select>
+                        </div>
+                        <div class="pole">
+                            <label class="pole__etykieta" for="filtr-lokalizacja">Lokalizacja</label>
+                            <select class="wybierz" id="filtr-lokalizacja">
+                                <option value="">Wszystkie lokalizacje</option>
+                            </select>
+                        </div>
+                        <div class="pole">
+                            <label class="pole__etykieta" for="filtr-status">Status</label>
+                            <select class="wybierz" id="filtr-status">
+                                <option value="">Wszystkie statusy</option>
+                                <option value="dostepny">Dostępny</option>
+                                <option value="wypozyczony">Wypożyczony</option>
+                                <option value="w_naprawie">W naprawie</option>
+                                <option value="zutylizowany">Zutylizowany</option>
+                            </select>
+                        </div>
+                        <div class="pole">
+                            <label class="pole__etykieta" for="filtr-stan">Stan techniczny</label>
+                            <select class="wybierz" id="filtr-stan">
+                                <option value="">Wszystkie stany</option>
+                                <option value="sprawny">Sprawny</option>
+                                <option value="uszkodzony">Uszkodzony</option>
+                                <option value="niesprawdzony">Niesprawdzony</option>
+                            </select>
+                        </div>
+                        <button class="przycisk przycisk--jasny" type="button" id="przycisk-wyczysc">
+                            Wyczyść
+                        </button>
+                    </div>
+                </section>
+
+                <section class="sekcja">
+                    <div id="tabela-zasobow"></div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <div class="modal" id="modal-zasob" hidden>
+        <div class="modal__panel">
+            <div class="modal__naglowek">
+                <h2 id="modal-zasob-tytul">Dodaj zasób</h2>
+                <button class="modal__zamknij" type="button" data-zamknij aria-label="Zamknij">&times;</button>
+            </div>
+
+            <form id="formularz-zasob" novalidate>
+                <div class="modal__tresc">
+                    <div class="komunikat komunikat--blad" id="modal-zasob-blad" hidden></div>
+
+                    <div class="siatka-pol">
+                        <div class="pole pole--pelny" id="pole-nazwa">
+                            <label class="pole__etykieta" for="zasob-nazwa">Nazwa *</label>
+                            <input class="wejscie" type="text" id="zasob-nazwa" maxlength="150"
+                                   placeholder="np. Projektor Epson">
+                            <span class="pole__blad ukryj">Nazwa jest wymagana.</span>
+                        </div>
+
+                        <div class="pole" id="pole-numer">
+                            <label class="pole__etykieta" for="zasob-numer">Numer katalogowy</label>
+                            <input class="wejscie" type="text" id="zasob-numer" maxlength="100"
+                                   placeholder="np. DEMO-001">
+                            <span class="pole__blad ukryj">Numer jest za długi.</span>
+                        </div>
+
+                        <div class="pole" id="pole-kategoria">
+                            <label class="pole__etykieta" for="zasob-kategoria">Kategoria *</label>
+                            <input class="wejscie" type="text" id="zasob-kategoria" maxlength="100"
+                                   placeholder="np. Sprzet komputerowy" list="lista-kategorii">
+                            <datalist id="lista-kategorii"></datalist>
+                            <span class="pole__blad ukryj">Kategoria jest wymagana.</span>
+                        </div>
+
+                        <div class="pole" id="pole-lokalizacja">
+                            <label class="pole__etykieta" for="zasob-lokalizacja">Lokalizacja *</label>
+                            <input class="wejscie" type="text" id="zasob-lokalizacja" maxlength="150"
+                                   placeholder="np. Sala 12" list="lista-lokalizacji">
+                            <datalist id="lista-lokalizacji"></datalist>
+                            <span class="pole__blad ukryj">Lokalizacja jest wymagana.</span>
+                        </div>
+
+                        <div class="pole" id="pole-stan">
+                            <label class="pole__etykieta" for="zasob-stan">Stan techniczny</label>
+                            <select class="wybierz" id="zasob-stan">
+                                <option value="sprawny">Sprawny</option>
+                                <option value="uszkodzony">Uszkodzony</option>
+                                <option value="niesprawdzony">Niesprawdzony</option>
+                            </select>
+                        </div>
+
+                        <div class="pole" id="pole-status">
+                            <label class="pole__etykieta" for="zasob-status">Status</label>
+                            <select class="wybierz" id="zasob-status">
+                                <option value="dostepny">Dostępny</option>
+                                <option value="w_naprawie">W naprawie</option>
+                                <option value="zutylizowany">Zutylizowany</option>
+                            </select>
+                            <span class="pole__podpowiedz">Status „Wypożyczony” ustala system po akceptacji wniosku.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal__stopka">
+                    <button class="przycisk przycisk--jasny" type="button" data-zamknij>Anuluj</button>
+                    <button class="przycisk" type="submit" id="modal-zasob-zapisz">Zapisz</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal" id="modal-usuwanie" hidden>
+        <div class="modal__panel">
+            <div class="modal__naglowek">
+                <h2>Archiwizacja zasobu</h2>
+                <button class="modal__zamknij" type="button" data-zamknij aria-label="Zamknij">&times;</button>
+            </div>
+            <div class="modal__tresc">
+                <p>Czy na pewno chcesz zarchiwizować zasób <strong id="usuwanie-nazwa"></strong>?</p>
+                <p class="sekcja__opis">Zasób zniknie z listy aktywnych wyposażenia. Operacji nie można cofnąć.</p>
+            </div>
+            <div class="modal__stopka">
+                <button class="przycisk przycisk--jasny" type="button" data-zamknij>Anuluj</button>
+                <button class="przycisk przycisk--zagrozenie" type="button" id="przycisk-usun-potwierdz">
+                    Archiwizuj
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/resources.js"></script>
+</body>
+</html>

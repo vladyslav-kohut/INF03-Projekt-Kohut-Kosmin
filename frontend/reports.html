@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Raporty — EduResource Manager</title>
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+    <div class="app">
+        <aside class="sidebar">
+            <div class="sidebar__marka">
+                EduResource Manager
+                <span>Zasoby szkolne</span>
+            </div>
+            <nav class="sidebar__nawigacja">
+                <a class="sidebar__link" href="index.html">Zasoby</a>
+                <a class="sidebar__link" href="loans.html">Wnioski i wypożyczenia</a>
+                <a class="sidebar__link ukryj" href="reports.html" data-admin>Raporty</a>
+            </nav>
+            <div class="sidebar__stopka">Projekt szkolny — INF.04</div>
+        </aside>
+
+        <div class="app--glowny">
+            <header class="naglowek">
+                <div class="naglowek__tytul">
+                    <h1>Raporty</h1>
+                    <span class="naglowek__podtytul">Zestawienia stanu zasobów i historia działań</span>
+                </div>
+                <div class="naglowek__uzytkownik">
+                    <div class="naglowek__dane">
+                        <strong id="uzytkownik-nazwa">…</strong>
+                        <span id="uzytkownik-rola">…</span>
+                    </div>
+                    <button class="przycisk przycisk--jasny przycisk--maly" type="button" data-wyloguj>
+                        Wyloguj
+                    </button>
+                </div>
+            </header>
+
+            <main class="tresc">
+                <section class="sekcja">
+                    <div class="sekcja__naglowek">
+                        <div>
+                            <h2 id="raport-tytul">Uszkodzone zasoby</h2>
+                            <p class="sekcja__opis" id="raport-opis">…</p>
+                        </div>
+                        <button class="przycisk przycisk--jasny" type="button" id="przycisk-odswiez">
+                            Odśwież
+                        </button>
+                    </div>
+
+                    <div class="zakladki" id="zakladki-raportow">
+                        <button class="zakladka zakladka--aktywna" type="button" data-typ="uszkodzone">
+                            Uszkodzone
+                        </button>
+                        <button class="zakladka" type="button" data-typ="niesprawdzone">
+                            Niesprawdzone
+                        </button>
+                        <button class="zakladka" type="button" data-typ="przeterminowane">
+                            Przeterminowane
+                        </button>
+                        <button class="zakladka" type="button" data-typ="historia">
+                            Historia działań
+                        </button>
+                    </div>
+
+                    <div id="tabela-raport"></div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/reports.js"></script>
+</body>
+</html>

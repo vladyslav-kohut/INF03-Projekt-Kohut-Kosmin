@@ -1,0 +1,466 @@
+.przycisk {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 9px 16px;
+    border-radius: var(--promien-maly);
+    border: 1px solid transparent;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.2;
+    cursor: pointer;
+    background: var(--primary);
+    color: #ffffff;
+    transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.przycisk:hover {
+    background: var(--primary-hover);
+}
+
+.przycisk:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+.przycisk--jasny {
+    background: var(--powierzchnia);
+    color: var(--tekst);
+    border-color: var(--obramowanie);
+}
+
+.przycisk--jasny:hover {
+    background: var(--neutral-miekki);
+}
+
+.przycisk--zagrozenie {
+    background: var(--danger);
+}
+
+.przycisk--zagrozenie:hover {
+    background: #b91c1c;
+}
+
+.przycisk--maly {
+    padding: 5px 10px;
+    font-size: 13px;
+}
+
+.przycisk--pelny {
+    width: 100%;
+}
+
+.grupa-przyciskow {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.pole {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    min-width: 0;
+}
+
+.pole__etykieta {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--tekst);
+}
+
+.pole__podpowiedz {
+    font-size: 12px;
+    color: var(--tekst-mgla);
+}
+
+.wejscie,
+.wybierz,
+.obszar {
+    width: 100%;
+    padding: 9px 11px;
+    border: 1px solid var(--obramowanie);
+    border-radius: var(--promien-maly);
+    background: var(--powierzchnia);
+    color: var(--tekst);
+    font-family: inherit;
+    font-size: 14px;
+}
+
+.wejscie:focus,
+.wybierz:focus,
+.obszar:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px var(--primary-miekki);
+}
+
+.wejscie::placeholder {
+    color: #98a2b3;
+}
+
+.wejscie[aria-invalid="true"],
+.wybierz[aria-invalid="true"] {
+    border-color: var(--danger);
+}
+
+.pole--blad .pole__blad {
+    font-size: 12px;
+    color: var(--danger);
+}
+
+.tabela-obudowa {
+    overflow-x: auto;
+    border: 1px solid var(--obramowanie);
+    border-radius: var(--promien);
+}
+
+.tabela {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    background: var(--powierzchnia);
+}
+
+.tabela th,
+.tabela td {
+    padding: 11px 14px;
+    text-align: left;
+    border-bottom: 1px solid var(--obramowanie);
+    vertical-align: middle;
+}
+
+.tabela th {
+    background: #f8fafc;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--tekst-mgla);
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.tabela tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.tabela tbody tr:hover {
+    background: #fafbfe;
+}
+
+.tabela td.liczba,
+.tabela th.liczba {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+}
+
+.odznaka {
+    display: inline-block;
+    padding: 3px 9px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+    background: var(--neutral-miekki);
+    color: var(--neutral);
+}
+
+.odznaka--dostepny,
+.odznaka--sprawny,
+.odznaka--zaakceptowany {
+    background: var(--success-miekki);
+    color: var(--success);
+}
+
+.odznaka--wypozyczony,
+.odznaka--oczekujacy {
+    background: var(--info-miekki);
+    color: var(--info);
+}
+
+.odznaka--w_naprawie,
+.odznaka--niesprawdzony,
+.odznaka--odrzucony {
+    background: var(--warning-miekki);
+    color: var(--warning);
+}
+
+.odznaka--zutylizowany,
+.odznaka--uszkodzony {
+    background: var(--danger-miekki);
+    color: var(--danger);
+}
+
+.odznaka--rola {
+    background: var(--primary-miekki);
+    color: var(--primary);
+}
+
+.komunikat {
+    padding: 11px 14px;
+    border-radius: var(--promien-maly);
+    font-size: 14px;
+    border: 1px solid transparent;
+    margin-bottom: 14px;
+}
+
+.komunikat--blad {
+    background: var(--danger-miekki);
+    border-color: #f8d7d7;
+    color: #991b1b;
+}
+
+.komunikat--sukces {
+    background: var(--success-miekki);
+    border-color: #cdeeda;
+    color: #14532d;
+}
+
+.komunikat--info {
+    background: var(--info-miekki);
+    border-color: #cdeaf3;
+    color: #155e75;
+}
+
+.komunikat:empty {
+    display: none;
+}
+
+.stan {
+    padding: 34px 16px;
+    text-align: center;
+    color: var(--tekst-mgla);
+    font-size: 14px;
+}
+
+.stan--ladowanie::before {
+    content: "";
+    display: block;
+    width: 26px;
+    height: 26px;
+    margin: 0 auto 10px;
+    border: 3px solid var(--obramowanie);
+    border-top-color: var(--primary);
+    border-radius: 50%;
+    animation: obrot 0.8s linear infinite;
+}
+
+@keyframes obrot {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.55);
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 6vh 16px 16px;
+    z-index: 50;
+    overflow-y: auto;
+}
+
+.modal[hidden] {
+    display: none;
+}
+
+.modal__panel {
+    background: var(--powierzchnia);
+    border-radius: var(--promien);
+    width: 100%;
+    max-width: 520px;
+    box-shadow: 0 20px 45px rgba(15, 23, 42, 0.28);
+    overflow: hidden;
+}
+
+.modal__panel--szeroki {
+    max-width: 720px;
+}
+
+.modal__naglowek {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--obramowanie);
+}
+
+.modal__zamknij {
+    border: none;
+    background: transparent;
+    font-size: 24px;
+    line-height: 1;
+    color: var(--tekst-mgla);
+    cursor: pointer;
+    padding: 0 4px;
+}
+
+.modal__zamknij:hover {
+    color: var(--tekst);
+}
+
+.modal__tresc {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.modal__stopka {
+    padding: 14px 20px;
+    border-top: 1px solid var(--obramowanie);
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    background: #fafbfe;
+}
+
+.siatka-pol {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+.siatka-pol .pole--pelny {
+    grid-column: 1 / -1;
+}
+
+@media (max-width: 560px) {
+    .siatka-pol {
+        grid-template-columns: 1fr;
+    }
+}
+
+.powiadomienia {
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    z-index: 100;
+    max-width: 340px;
+}
+
+.powiadomienie {
+    padding: 11px 15px;
+    border-radius: var(--promien-maly);
+    font-size: 14px;
+    color: #ffffff;
+    background: #1f2937;
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.25);
+    animation: wjazd 0.18s ease;
+}
+
+.powiadomienie--blad {
+    background: var(--danger);
+}
+
+.powiadomienie--sukces {
+    background: var(--success);
+}
+
+@keyframes wjazd {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+}
+
+.zakladki {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    border-bottom: 1px solid var(--obramowanie);
+    margin-bottom: 18px;
+}
+
+.zakladka {
+    border: none;
+    background: transparent;
+    padding: 9px 14px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--tekst-mgla);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+}
+
+.zakladka:hover {
+    color: var(--tekst);
+}
+
+.zakladka--aktywna {
+    color: var(--primary);
+    border-bottom-color: var(--primary);
+}
+
+.pula-pusta {
+    padding: 30px 16px;
+    text-align: center;
+    color: var(--tekst-mgla);
+    font-size: 14px;
+}
+
+.karta-podsumowania {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 14px;
+    margin-bottom: 20px;
+}
+
+.karta-podsumowania__element {
+    background: var(--powierzchnia);
+    border: 1px solid var(--obramowanie);
+    border-radius: var(--promien);
+    padding: 14px 16px;
+    box-shadow: var(--cien);
+}
+
+.karta-podsumowania__etykieta {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--tekst-mgla);
+    font-weight: 700;
+}
+
+.karta-podsumowania__wartosc {
+    font-size: 24px;
+    font-weight: 700;
+    margin-top: 4px;
+}
+
+.formularz-wiersz {
+    display: flex;
+    gap: 12px;
+    align-items: flex-end;
+    flex-wrap: wrap;
+}
+
+.formularz-wiersz .pole {
+    min-width: 230px;
+    flex: 1;
+}
+
+.formularz-wiersz .przycisk {
+    flex-shrink: 0;
+}
+
+.podsumowanie-raportu {
+    font-size: 13px;
+    color: var(--tekst-mgla);
+    margin-bottom: 10px;
+}
+
+.ukryj {
+    display: none !important;
+}
