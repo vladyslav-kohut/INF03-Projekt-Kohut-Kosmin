@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Logowanie — EduResource Manager</title>
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+    <main class="ekran-logowania">
+        <section class="karta-logowania">
+            <h1 class="karta-logowania__marka">EduResource Manager</h1>
+            <p class="karta-logowania__podtytul">Zaloguj się, aby zarządzać zasobami szkoły</p>
+
+            <div id="komunikat" class="komunikat komunikat--blad" hidden></div>
+
+            <form id="formularz-logowania" class="karta-logowania__formularz" novalidate>
+                <div class="pole" id="pole-email">
+                    <label class="pole__etykieta" for="email">Adres e-mail</label>
+                    <input class="wejscie" type="email" id="email" name="email"
+                           autocomplete="username" placeholder="np. admin@eduresource.local">
+                    <span class="pole__blad ukryj">Podaj poprawny adres e-mail.</span>
+                </div>
+
+                <div class="pole" id="pole-haslo">
+                    <label class="pole__etykieta" for="haslo">Hasło</label>
+                    <input class="wejscie" type="password" id="haslo" name="haslo"
+                           autocomplete="current-password" placeholder="••••••••">
+                    <span class="pole__blad ukryj">Podaj hasło.</span>
+                </div>
+
+                <button class="przycisk przycisk--pelny" type="submit" id="przycisk-logowanie">
+                    Zaloguj się
+                </button>
+            </form>
+
+            <p class="karta-logowania__odniesienie">
+                Aplikacja lokalna — dostęp wyłącznie dla użytkowników szkoły.
+            </p>
+        </section>
+    </main>
+
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>

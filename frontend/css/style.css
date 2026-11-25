@@ -243,3 +243,46 @@ a:hover {
         grid-template-columns: 1fr;
     }
 }
+
+.ekran-logowania {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: linear-gradient(155deg, #0f172a 0%, #1e3a8a 100%);
+}
+
+.karta-logowania {
+    width: 100%;
+    max-width: 400px;
+    background: var(--powierzchnia);
+    border-radius: var(--promien);
+    box-shadow: 0 24px 60px rgba(15, 23, 42, 0.35);
+    padding: 30px 28px;
+}
+
+.karta-logowania__marka {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.karta-logowania__podtytul {
+    font-size: 13px;
+    color: var(--tekst-mgla);
+    margin-top: 4px;
+}
+
+.karta-logowania__formularz {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 22px;
+}
+
+.karta-logowania__odniesienie {
+    margin-top: 18px;
+    font-size: 12px;
+    color: var(--tekst-mgla);
+    text-align: center;
+}
