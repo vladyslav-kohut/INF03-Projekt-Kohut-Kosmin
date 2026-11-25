@@ -220,6 +220,11 @@ if ($metoda === 'PATCH' && isset($_GET['wypozyczenie'])) {
         odpowiedz_json(['blad' => 'Nieznana czynność.'], 422);
     }
 
+    $stan = isset($dane['stan_techniczny']) ? $dane['stan_techniczny'] : null;
+    if ($stan !== null && !in_array($stan, ['sprawny', 'uszkodzony', 'niesprawdzony'], true)) {
+        odpowiedz_json(['blad' => 'Nieprawidłowy stan techniczny.'], 422);
+    }
+
     try {
         $polaczenie->begin_transaction();
         $stmt = $polaczenie->prepare(
@@ -247,7 +252,14 @@ if ($metoda === 'PATCH' && isset($_GET['wypozyczenie'])) {
         $stmt->bind_param('i', $wypozyczenie['id_zasobu']);
         $stmt->execute();
         $zasob = $stmt->get_result()->fetch_assoc();
-        $nowyStatus = $zasob && $zasob['stan_techniczny'] === 'uszkodzony' ? 'w_naprawie' : 'dostepny';
+        $stanZasobu = $zasob ? $zasob['stan_techniczny'] : 'sprawny';
+        if ($stan !== null) {
+            $stanZasobu = $stan;
+            $stmt = $polaczenie->prepare('UPDATE zasoby SET stan_techniczny = ? WHERE id_zasobu = ?');
+            $stmt->bind_param('si', $stan, $wypozyczenie['id_zasobu']);
+            $stmt->execute();
+        }
+        $nowyStatus = $stanZasobu === 'uszkodzony' ? 'w_naprawie' : 'dostepny';
 
         $stmt = $polaczenie->prepare('UPDATE wypozyczenia SET data_zwrotu = NOW() WHERE id_wypozyczenia = ?');
         $stmt->bind_param('i', $idWypozyczenia);
