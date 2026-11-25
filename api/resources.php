@@ -78,7 +78,17 @@ if ($metoda === 'POST') {
         throw $blad;
     }
 
-    odpowiedz_json(['dane' => ['id_zasobu' => $polaczenie->insert_id]], 201);
+    $idZasobu = $polaczenie->insert_id;
+    zapisz_historie_dzialan(
+        $polaczenie,
+        (int) $_SESSION['uzytkownik']['id'],
+        'dodano_zasob',
+        'zasob',
+        (int) $idZasobu,
+        'Dodano nowy zasób: ' . $nazwa
+    );
+
+    odpowiedz_json(['dane' => ['id_zasobu' => $idZasobu]], 201);
 }
 
 if ($metoda === 'PATCH') {

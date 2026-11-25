@@ -21,6 +21,7 @@ const Raporty = {
         zaakceptowano_wniosek: 'Akceptacja wniosku',
         odrzucono_wniosek: 'Odrzucenie wniosku',
         zarejestrowano_zwrot: 'Zwrot zasobu',
+        dodano_zasob: 'Dodanie zasobu',
         zmieniono_zasob: 'Zmiana zasobu',
         zarchiwizowano_zasob: 'Archiwizacja zasobu'
     },
