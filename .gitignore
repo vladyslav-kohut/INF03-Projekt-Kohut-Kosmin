@@ -1,5 +1,7 @@
 # Dokumentacja wewnętrzna (nie publikujemy w repo)
 docs/IMPLEMENTATION_PLAN.md
+docs/LOCAL_*.md
+AGENTS.md
 
 # Lokalna konfiguracja środowiska
 api/config/database.php

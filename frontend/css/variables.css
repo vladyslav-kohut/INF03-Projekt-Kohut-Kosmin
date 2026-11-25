@@ -1,0 +1,33 @@
+:root {
+    --tlo: #f2f5fa;
+    --powierzchnia: #ffffff;
+    --tekst: #1b2430;
+    --tekst-mgla: #667085;
+    --obramowanie: #e4e9f2;
+
+    --primary: #2563eb;
+    --primary-hover: #1d4ed8;
+    --primary-miekki: #eaf1ff;
+
+    --danger: #dc2626;
+    --danger-miekki: #fdecec;
+    --success: #16a34a;
+    --success-miekki: #e9f7ef;
+    --warning: #d97706;
+    --warning-miekki: #fdf3e7;
+    --info: #0891b2;
+    --info-miekki: #e6f6fb;
+    --neutral: #64748b;
+    --neutral-miekki: #eef1f6;
+
+    --sidebar-tlo: #0f172a;
+    --sidebar-tekst: #c7d2e0;
+    --sidebar-aktywny-tlo: #1d4ed8;
+
+    --cien: 0 1px 2px rgba(15, 23, 42, 0.06), 0 6px 16px rgba(15, 23, 42, 0.06);
+    --promien: 10px;
+    --promien-maly: 6px;
+
+    --czcionka: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --szerokosc-sidebar: 240px;
+}
