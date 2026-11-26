@@ -181,6 +181,7 @@ INF03-Projekt-Kohut-Kosmin/
 | `docs/RISK_ANALYSIS.md` | analiza ryzyka, kosztów i nakładu pracy |
 | `docs/GIT-RULES.md` | zasady pracy z gałęziami, commitami i Pull Requestami |
 | `docs/ARKUSZ_TESTOWY.md` | arkusz testów funkcjonalnych z wynikami |
+| `docs/MAKIETA_UI.md` | makieta głównej strony oraz pliki PNG i SVG |
 
 ---
 
